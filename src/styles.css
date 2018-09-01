@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #404C51
+}
+
+label {
+  font-weight: bold;
+}
+
+@media (min-width: 1200px){
+  .container {
+    width: 1070px;
+    margin: 0 auto;
+  }
+}
+
+.col-valor {
+  width: 120px;
+  text-align: right;
+}
+
+.col-data {
+  width: 120px;
+  text-align: center;
+}
+
+body .ui-table .ui-table-thead > tr > th {
+  font-weight: bold !important;
+}
+.col-valor-header {
+  width: 120px;
+  text-align: center;
+}
+
+.col-acoes {
+  width: 900px;
+  text-align: center
+}
