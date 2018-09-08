@@ -49,3 +49,7 @@ body .ui-table .ui-table-thead > tr > th {
   width: 900px;
   text-align: center
 }
+
+.ui-message {
+  margin-top: 4px !important;
+}

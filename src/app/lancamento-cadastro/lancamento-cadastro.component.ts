@@ -28,4 +28,7 @@ export class LancamentoCadastroComponent implements OnInit {
   ngOnInit() {
   }
 
+  salvar() {
+  }
+
 }
