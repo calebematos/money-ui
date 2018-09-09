@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { CalendarioPtBr } from './../../shared/Calendario-ptBr';
+
 @Component({
   selector: 'app-lancamento-cadastro',
   templateUrl: './lancamento-cadastro.component.html',
@@ -7,7 +9,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LancamentoCadastroComponent implements OnInit {
 
-  constructor() { }
 
   tipos = [
     { label: 'Receita', value: 'RECEITA' },
@@ -25,6 +26,9 @@ export class LancamentoCadastroComponent implements OnInit {
     { label: 'José', value: '3' },
   ];
 
+  br = CalendarioPtBr.pt_BR;
+
+  constructor() { }
   ngOnInit() {
   }
 

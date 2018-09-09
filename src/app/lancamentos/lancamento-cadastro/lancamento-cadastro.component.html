@@ -13,12 +13,12 @@
       </div>
       <div class="ui-g-6 ui-md-3 ui-fluid">
         <label>Vencimento</label>
-        <p-calendar dateFormat="dd/mm/yy" name="dataVencimento" ngModel #dataVencimento="ngModel" required></p-calendar>
+        <p-calendar dateFormat="dd/mm/yy" name="dataVencimento" ngModel #dataVencimento="ngModel" required [locale]="br"></p-calendar>
         <p-message *ngIf="dataVencimento.hasError('required') && dataVencimento.dirty" severity="error" text="Informe uma data de vencimento"></p-message>
       </div>
       <div class="ui-g-6 ui-md-3 ui-fluid">
         <label>{{tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento'}}</label>
-        <p-calendar dateFormat="dd/mm/yy"></p-calendar>
+        <p-calendar dateFormat="dd/mm/yy" [locale]="br"></p-calendar>
       </div>
       <div class="ui-g-12 ui-md-9 ui-fluid">
         <label>Descrição</label>
