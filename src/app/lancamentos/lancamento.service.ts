@@ -8,7 +8,7 @@ export class LancamentoFiltro {
   dataVencimentoInicio: Date;
   dataVencimentoFim: Date;
   pagina = 0;
-  itensPorPagime = 5;
+  itensPorPagina = 5;
 
 }
 
@@ -26,7 +26,7 @@ export class LancamentoService {
     headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
 
     params.set('page', filtro.pagina.toString());
-    params.set('size', filtro.itensPorPagime.toString());
+    params.set('size', filtro.itensPorPagina.toString());
 
     if (filtro.descricao) {
       params.set('descricao', filtro.descricao);

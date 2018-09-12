@@ -1,6 +1,6 @@
 <div class="container">
   <div class="ui-g">
-    <form autocomplete="off" (ngSubmit)= "pesquisar()">
+    <form autocomplete="off" (ngSubmit)="pesquisar()">
 
       <div class="ui-g-12">
         <h1>Lançamentos</h1>
@@ -23,10 +23,11 @@
       </div>
     </form>
   </div>
+
   <div class="ui-g">
     <div class="ui-g-12">
 
-      <p-table [value]="lancamentos" [responsive]="true" [paginator]="true" [rows]="filtro.itensPorPagime"
+      <p-table [value]="lancamentos" [responsive]="true" [paginator]="true" [rows]="filtro.itensPorPagina"
         [totalRecords]="totalRegistros" [lazy]="true" (onLazyLoad)="aoMudarPagina($event)">
         <ng-template pTemplate="header">
           <tr>
