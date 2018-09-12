@@ -45,7 +45,13 @@ export class PessoaService {
 
   }
 
-  listarTodas() {
+  listarTodas(): Promise<any> {
+    const headers = new Headers();
+    headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
+
+    return this.http.get(`${this.pessoaUrl}`, { headers })
+      .toPromise()
+      .then(response => response.json().content);
 
   }
 
