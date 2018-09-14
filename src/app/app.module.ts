@@ -4,6 +4,8 @@ import { HttpModule } from '@angular/http';
 
 import { MessageService } from 'primeng/components/common/api';
 import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
@@ -23,13 +25,14 @@ import { PessoaService } from './pessoas/pessoa.service';
     ToastModule,
     CoreModule,
     LancamentosModule,
-    PessoasModule
-
+    PessoasModule,
+    ConfirmDialogModule
   ],
   providers: [
     LancamentoService,
     PessoaService,
-    MessageService
+    MessageService,
+    ConfirmationService
   ],
   bootstrap: [AppComponent]
 })
