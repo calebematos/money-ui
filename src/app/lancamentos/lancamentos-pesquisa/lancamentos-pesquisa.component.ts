@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
-import { LazyLoadEvent } from 'primeng/components/common/api';
+import { LazyLoadEvent, MessageService } from 'primeng/components/common/api';
 
 import { CalendarioPtBr } from './../../shared/Calendario-ptBr';
 import { LancamentoService, LancamentoFiltro } from '../lancamento.service';
@@ -16,8 +16,12 @@ export class LancamentosPesquisaComponent implements OnInit {
   lancamentos = [];
   filtro = new LancamentoFiltro();
   totalRegistros = 0;
+  @ViewChild('tabela') tabela;
 
-  constructor(private lancamentoService: LancamentoService) { }
+  constructor(
+    private lancamentoService: LancamentoService,
+    private messageService: MessageService
+  ) { }
 
   ngOnInit() {
   }
@@ -35,5 +39,20 @@ export class LancamentosPesquisaComponent implements OnInit {
   aoMudarPagina(event: LazyLoadEvent) {
     const pagina = event.first / event.rows;
     this.pesquisar(pagina);
+  }
+
+  excluir(lancamento: any) {
+
+    this.lancamentoService.excluir(lancamento.codigo)
+      .then(() => {
+        console.log('excluiu');
+        if (this.tabela.first === 0) {
+          this.pesquisar();
+        } else {
+          this.tabela.first = 0;
+        }
+        this.messageService.add({ severity: 'success', summary: 'Lançamento excluído com sucesso!' });
+      });
+
   }
 }

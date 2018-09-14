@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
+import { MessageService } from 'primeng/components/common/api';
+import { ToastModule } from 'primeng/toast';
+
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { LancamentosModule } from './lancamentos/lancamentos.module';
@@ -17,7 +20,7 @@ import { PessoaService } from './pessoas/pessoa.service';
   imports: [
     BrowserModule,
     HttpModule,
-
+    ToastModule,
     CoreModule,
     LancamentosModule,
     PessoasModule
@@ -25,7 +28,8 @@ import { PessoaService } from './pessoas/pessoa.service';
   ],
   providers: [
     LancamentoService,
-    PessoaService
+    PessoaService,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })
