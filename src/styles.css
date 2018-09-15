@@ -53,3 +53,7 @@ body .ui-table .ui-table-thead > tr > th {
 .ui-message {
   margin-top: 4px !important;
 }
+
+.ui-overflow-hidden {
+  position: inherit !important;
+}
