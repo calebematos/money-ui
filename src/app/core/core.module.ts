@@ -32,6 +32,7 @@ registerLocaleData(localePt);
     PessoaService,
     MessageService,
     ConfirmationService,
+    ErrorHandlerService,
 
     { provide: LOCALE_ID, useValue: 'pt-BR' }
   ]

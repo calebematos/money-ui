@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { LazyLoadEvent, MessageService, ConfirmationService } from 'primeng/components/common/api';
 
+import { ErrorHandlerService } from './../../core/error-handler.service';
 import { CalendarioPtBr } from './../../shared/Calendario-ptBr';
 import { LancamentoService, LancamentoFiltro } from '../lancamento.service';
 
@@ -20,6 +21,7 @@ export class LancamentosPesquisaComponent implements OnInit {
 
   constructor(
     private lancamentoService: LancamentoService,
+    private errorHandler: ErrorHandlerService,
     private messageService: MessageService,
     private confirmation: ConfirmationService
   ) { }
@@ -34,7 +36,8 @@ export class LancamentosPesquisaComponent implements OnInit {
       .then(retorno => {
         this.lancamentos = retorno.lancamentos;
         this.totalRegistros = retorno.total;
-      });
+      })
+      .catch(erro => this.errorHandler.handler(erro));
   }
 
   aoMudarPagina(event: LazyLoadEvent) {
@@ -60,7 +63,8 @@ export class LancamentosPesquisaComponent implements OnInit {
           this.tabela.first = 0;
         }
         this.messageService.add({ severity: 'success', summary: 'Lançamento excluído com sucesso!' });
-      });
+      })
+      .catch(erro => this.errorHandler.handler(erro));
 
   }
 }
