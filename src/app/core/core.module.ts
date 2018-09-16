@@ -13,6 +13,7 @@ import { LancamentoService } from '../lancamentos/lancamento.service';
 import { PessoaService } from '../pessoas/pessoa.service';
 import { CategoriaService } from '../categorias/categoria.service';
 import { RouterModule } from '@angular/router';
+import { PaginaNaoEncotradaComponent } from './pagina-nao-encotrada.component';
 
 registerLocaleData(localePt);
 
@@ -24,7 +25,7 @@ registerLocaleData(localePt);
     ToastModule,
     ConfirmDialogModule
   ],
-  declarations: [NavbarComponent],
+  declarations: [NavbarComponent, PaginaNaoEncotradaComponent],
   exports: [
     NavbarComponent,
     ToastModule,
