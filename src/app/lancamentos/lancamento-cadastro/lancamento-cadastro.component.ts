@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { CalendarioPtBr } from './../../shared/Calendario-ptBr';
 import { CategoriaService } from '../../categorias/categoria.service';
+import { PessoaService } from '../../pessoas/pessoa.service';
 
 @Component({
   selector: 'app-lancamento-cadastro',
@@ -19,21 +20,22 @@ export class LancamentoCadastroComponent implements OnInit {
 
   categorias = [];
 
-  pessoas = [
-    { label: 'Joao', value: '1' },
-    { label: 'Maria', value: '2' },
-    { label: 'José', value: '3' },
-  ];
+  pessoas = [];
 
   br = CalendarioPtBr.pt_BR;
 
   constructor(
     private categoriaService: CategoriaService,
+    private pessoaService: PessoaService,
     private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit() {
     this.carregarCategorias();
+    this.carregarPessoas();
+  }
+
+  salvar() {
   }
 
   carregarCategorias() {
@@ -46,7 +48,16 @@ export class LancamentoCadastroComponent implements OnInit {
       .catch(erro => this.errorHandler.handler(erro));
   }
 
-  salvar() {
+  carregarPessoas() {
+    this.pessoaService.listarTodas()
+      .then(pessoas => {
+        console.log(pessoas);
+        this.pessoas = pessoas.map(p => {
+          return { label: p.nome, value: p.codigo };
+        });
+      })
+      .catch(erro => this.errorHandler.handler(erro));
   }
+
 
 }
