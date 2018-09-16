@@ -2,7 +2,7 @@
   <form #pessoaForm="ngForm" autocomplete="off" (submit)="salvar(pessoaForm)">
     <div class="ui-g">
       <div class="ui-g-12">
-        <h1>Nova pessoa {{pessoaForm.invalid}}</h1>
+        <h1>Nova pessoa</h1>
       </div>
       <div class="ui-g-12 ui-fluid">
         <label>Nome</label>
@@ -51,7 +51,7 @@
       <div class="ui-g-12">
         <p-button type="submit" label="Salvar" [disabled]="pessoaForm.invalid"></p-button>
         <p-button type="button" label="Novo"></p-button>
-        <a href="javascript:;">Voltar para a pesquisa</a>
+        <a routerLink="/pessoas">Voltar para a pesquisa</a>
       </div>
 
     </div>

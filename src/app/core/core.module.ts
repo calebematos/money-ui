@@ -12,12 +12,14 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LancamentoService } from '../lancamentos/lancamento.service';
 import { PessoaService } from '../pessoas/pessoa.service';
 import { CategoriaService } from '../categorias/categoria.service';
+import { RouterModule } from '@angular/router';
 
 registerLocaleData(localePt);
 
 @NgModule({
   imports: [
     CommonModule,
+    RouterModule,
 
     ToastModule,
     ConfirmDialogModule
