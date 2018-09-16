@@ -55,13 +55,23 @@ export class PessoaService {
 
   }
 
-  excluir(codigo: number): Promise<void>{
+  excluir(codigo: number): Promise<void> {
     const headers = new Headers();
     headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
 
-    return this.http.delete(`${this.pessoaUrl}/${codigo}`, {headers})
-    .toPromise()
-    .then(() => null);
+    return this.http.delete(`${this.pessoaUrl}/${codigo}`, { headers })
+      .toPromise()
+      .then(() => null);
+  }
+
+  mudarStatus(codigo: number, status: boolean): Promise<void> {
+    const headers = new Headers();
+    headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.put(`${this.pessoaUrl}/${codigo}/ativo`, !status , { headers })
+      .toPromise()
+      .then(() => null);
 
   }
 

@@ -53,16 +53,27 @@ export class PessoasPesquisaComponent implements OnInit {
 
   excluir(pessoa: any) {
     this.pessoaService.excluir(pessoa.codigo)
-    .then(() => {
-      if (this.tabela.first === 0) {
-        this.pesquisar();
-      } else {
-        this.tabela.first = 0;
-        this.pesquisar();
-      }
-      this.messageService.add({ severity: 'success', summary: 'Pessoa excluída com sucesso!' });
-    })
-    .catch(erro => this.errorHandler.handler(erro));
+      .then(() => {
+        if (this.tabela.first === 0) {
+          this.pesquisar();
+        } else {
+          this.tabela.first = 0;
+          this.pesquisar();
+        }
+        this.messageService.add({ severity: 'success', summary: 'Pessoa excluída com sucesso!' });
+      })
+      .catch(erro => this.errorHandler.handler(erro));
+  }
+
+  mudarStatus(pessoa: any) {
+    this.pessoaService.mudarStatus(pessoa.codigo, pessoa.ativo)
+      .then(() => {
+        pessoa.ativo = !pessoa.ativo;
+        const status = pessoa.ativo ? 'ativada' : 'desativada';
+        this.messageService.add({ severity: 'success', summary: `Pessoa ${status} com sucesso!` });
+      })
+      .catch(erro => this.errorHandler.handler(erro));
+
   }
 
 }
