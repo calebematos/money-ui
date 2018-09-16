@@ -11,6 +11,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LancamentoService } from '../lancamentos/lancamento.service';
 import { PessoaService } from '../pessoas/pessoa.service';
+import { CategoriaService } from '../categorias/categoria.service';
 
 registerLocaleData(localePt);
 
@@ -30,9 +31,11 @@ registerLocaleData(localePt);
   providers: [
     LancamentoService,
     PessoaService,
+    ErrorHandlerService,
+    CategoriaService,
+
     MessageService,
     ConfirmationService,
-    ErrorHandlerService,
 
     { provide: LOCALE_ID, useValue: 'pt-BR' }
   ]
