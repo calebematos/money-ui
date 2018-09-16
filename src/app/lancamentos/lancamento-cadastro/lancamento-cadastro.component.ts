@@ -4,6 +4,8 @@ import { ErrorHandlerService } from './../../core/error-handler.service';
 import { CalendarioPtBr } from './../../shared/Calendario-ptBr';
 import { CategoriaService } from '../../categorias/categoria.service';
 import { PessoaService } from '../../pessoas/pessoa.service';
+import { Lancamento } from '../../core/model';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-lancamento-cadastro',
@@ -19,8 +21,8 @@ export class LancamentoCadastroComponent implements OnInit {
   ];
 
   categorias = [];
-
   pessoas = [];
+  lancamento = new Lancamento();
 
   br = CalendarioPtBr.pt_BR;
 
@@ -35,7 +37,8 @@ export class LancamentoCadastroComponent implements OnInit {
     this.carregarPessoas();
   }
 
-  salvar() {
+  salvar(form: FormControl) {
+    console.log(this.lancamento);
   }
 
   carregarCategorias() {
@@ -51,7 +54,6 @@ export class LancamentoCadastroComponent implements OnInit {
   carregarPessoas() {
     this.pessoaService.listarTodas()
       .then(pessoas => {
-        console.log(pessoas);
         this.pessoas = pessoas.map(p => {
           return { label: p.nome, value: p.codigo };
         });
