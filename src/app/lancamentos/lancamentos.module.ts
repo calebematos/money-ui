@@ -15,13 +15,13 @@ import { InputTextModule } from 'primeng/inputtext';
 
 import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
-import { RouterModule } from '@angular/router';
+import { LancamentosRoutingModule } from './lancamentos-routing.module';
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule,
 
     InputTextModule,
     ButtonModule,
@@ -33,7 +33,8 @@ import { RouterModule } from '@angular/router';
     DropdownModule,
     MessageModule,
 
-    CurrencyMaskModule
+    CurrencyMaskModule,
+    LancamentosRoutingModule
   ],
   declarations: [
     LancamentoCadastroComponent,
