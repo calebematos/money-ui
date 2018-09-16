@@ -2,6 +2,7 @@ import { Http, Headers, URLSearchParams } from '@angular/http';
 import { Injectable } from '@angular/core';
 
 import * as moment from 'moment';
+import { Lancamento } from '../core/model';
 
 export class LancamentoFiltro {
   descricao: string;
@@ -61,5 +62,15 @@ export class LancamentoService {
     return this.http.delete(`${this.lancamentoUrl}/${codigo}`, { headers })
       .toPromise()
       .then(() => null);
+  }
+
+  adicionar(lancamento: Lancamento): Promise<Lancamento> {
+    const headers = new Headers();
+    headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.post(this.lancamentoUrl, JSON.stringify(lancamento), { headers })
+      .toPromise()
+      .then(response => response.json());
   }
 }

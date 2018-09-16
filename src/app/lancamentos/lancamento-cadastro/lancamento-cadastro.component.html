@@ -9,7 +9,7 @@
       </div>
 
       <div class="ui-g-12">
-        <p-selectButton [options]="tipos" #tipo></p-selectButton>
+        <p-selectButton [options]="tipos" #tipo  name="tipo" [(ngModel)]="lancamento.tipo"></p-selectButton>
       </div>
       <div class="ui-g-6 ui-md-3 ui-fluid">
         <label>Vencimento</label>
