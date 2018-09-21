@@ -38,7 +38,8 @@
             <td><a href="#" [pTooltip]="pessoa.ativo ? 'Inativar' : 'Ativar'" tooltipPosition="top" (click)="mudarStatus(pessoa)">{{pessoa.ativo ? 'Ativo'
                 : 'Inativo'}}</a></td>
             <td>
-              <button pButton type="button" icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></button>
+              <button pButton type="button" icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
+                [routerLink]="['/pessoas', pessoa.codigo]"></button>
               <button pButton type="button" icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top" (click)="confirmarExclusao(pessoa)"></button>
             </td>
           </tr>
