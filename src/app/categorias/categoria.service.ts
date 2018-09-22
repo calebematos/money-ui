@@ -1,10 +1,12 @@
 import { Http, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 
+import { environment } from './../../environments/environment';
+
 @Injectable()
 export class CategoriaService {
 
-  categoriaUrl = 'http://localhost:8080/categorias';
+  categoriaUrl = `${environment.apiUrl}/categorias`;
 
   constructor(private http: Http) { }
 

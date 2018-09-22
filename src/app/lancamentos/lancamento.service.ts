@@ -1,8 +1,9 @@
-import { Http, Headers, URLSearchParams } from '@angular/http';
 import { Injectable } from '@angular/core';
+import { Http, Headers, URLSearchParams } from '@angular/http';
 
 import * as moment from 'moment';
 import { Lancamento } from '../core/model';
+import { environment } from './../../environments/environment';
 
 export class LancamentoFiltro {
   descricao: string;
@@ -16,7 +17,7 @@ export class LancamentoFiltro {
 @Injectable()
 export class LancamentoService {
 
-  lancamentoUrl = 'http://localhost:8080/lancamentos';
+  lancamentoUrl = `${environment.apiUrl}/lancamentos`;
 
   constructor(private http: Http) { }
 
