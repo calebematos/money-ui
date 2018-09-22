@@ -1,5 +1,6 @@
-import { Http, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
+
+import { AuthHttp } from 'angular2-jwt';
 
 import { environment } from './../../environments/environment';
 
@@ -8,14 +9,11 @@ export class CategoriaService {
 
   categoriaUrl = `${environment.apiUrl}/categorias`;
 
-  constructor(private http: Http) { }
+  constructor(private http: AuthHttp) { }
 
   listarTodas(): Promise<any> {
-    const headers = new Headers();
-    headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
-
-    return this.http.get(this.categoriaUrl, { headers })
-    .toPromise()
-    .then( response => response.json());
+    return this.http.get(this.categoriaUrl)
+      .toPromise()
+      .then(response => response.json());
   }
 }
