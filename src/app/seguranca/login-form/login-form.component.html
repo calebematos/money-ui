@@ -13,7 +13,7 @@
         <input pInputText type="password" placeholder="Senha" name="senha" #senha ngModel required >
       </div>
       <div class="ui-g-12">
-        <p-button label="Login" (click)="login(usuario.value, senha.value)" [disabled]="loginForm.invalid"></p-button>
+        <p-button label="Login" (click)="login(usuario.value, senha.value); senha.value=''" [disabled]="loginForm.invalid"></p-button>
       </div>
 
     </div>

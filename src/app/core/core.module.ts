@@ -4,6 +4,7 @@ import { registerLocaleData } from '@angular/common';
 
 import localePt from '@angular/common/locales/pt';
 
+import { JwtHelper } from 'angular2-jwt';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { MessageService, ConfirmationService } from 'primeng/api';
@@ -43,6 +44,7 @@ registerLocaleData(localePt);
     CategoriaService,
     AuthService,
 
+    JwtHelper,
     MessageService,
     ConfirmationService,
 
