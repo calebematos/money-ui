@@ -2,8 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { LazyLoadEvent, MessageService, ConfirmationService } from 'primeng/components/common/api';
 
-import { ErrorHandlerService } from './../../core/error-handler.service';
+import { AuthService } from './../../seguranca/auth.service';
 import { CalendarioPtBr } from './../../shared/Calendario-ptBr';
+import { ErrorHandlerService } from './../../core/error-handler.service';
 import { LancamentoService, LancamentoFiltro } from '../lancamento.service';
 
 @Component({
@@ -21,6 +22,7 @@ export class LancamentosPesquisaComponent implements OnInit {
 
   constructor(
     private lancamentoService: LancamentoService,
+    private auth: AuthService,
     private errorHandler: ErrorHandlerService,
     private messageService: MessageService,
     private confirmation: ConfirmationService
