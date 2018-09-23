@@ -1,18 +1,27 @@
+import { Router } from '@angular/router';
+import { Response } from '@angular/http';
 import { Injectable } from '@angular/core';
 
 import { MessageService } from 'primeng/api';
-import { Response } from '@angular/http';
+
+import { NotAuthenticatedErro } from '../seguranca/money-http';
 
 @Injectable()
 export class ErrorHandlerService {
 
-  constructor(private messageService: MessageService) { }
+  constructor(
+    private messageService: MessageService,
+    private router: Router
+  ) { }
 
   handler(errorResponse: any) {
     let msg: string;
 
     if (typeof errorResponse === 'string') {
       msg = errorResponse;
+    } else if (errorResponse instanceof NotAuthenticatedErro) {
+      msg = 'Sua sessão expirou!';
+      this.router.navigate(['/login']);
     } else if (errorResponse instanceof Response &&
       errorResponse.status >= 400 && errorResponse.status < 500) {
 

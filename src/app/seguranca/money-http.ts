@@ -6,6 +6,8 @@ import { AuthConfig, AuthHttp } from 'angular2-jwt';
 
 import { AuthService } from './auth.service';
 
+export class NotAuthenticatedErro { }
+
 @Injectable()
 export class MoneyHttp extends AuthHttp {
 
@@ -51,6 +53,9 @@ export class MoneyHttp extends AuthHttp {
 
       const chamadaNovoAccessToken = this.auth.obterNovoAccessToken()
         .then(() => {
+          if (this.auth.isAccessTokenInvalido()) {
+            throw new NotAuthenticatedErro();
+          }
           return fn().toPromise();
         });
 
