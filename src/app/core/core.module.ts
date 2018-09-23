@@ -16,6 +16,7 @@ import { PessoaService } from '../pessoas/pessoa.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ErrorHandlerService } from './error-handler.service';
 import { CategoriaService } from '../categorias/categoria.service';
+import { NaoAutorizadoComponent } from './nao-autorizado.component';
 import { LancamentoService } from '../lancamentos/lancamento.service';
 import { PaginaNaoEncotradaComponent } from './pagina-nao-encotrada.component';
 
@@ -32,7 +33,8 @@ registerLocaleData(localePt);
   ],
   declarations: [
     NavbarComponent,
-    PaginaNaoEncotradaComponent
+    PaginaNaoEncotradaComponent,
+    NaoAutorizadoComponent
   ],
   exports: [
     NavbarComponent,
