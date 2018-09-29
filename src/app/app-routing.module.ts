@@ -5,6 +5,10 @@ import { NaoAutorizadoComponent } from './core/nao-autorizado.component';
 import { PaginaNaoEncotradaComponent } from './core/pagina-nao-encotrada.component';
 
 const router: Routes = [
+
+  { path: 'lancamentos', loadChildren: 'app/lancamentos/lancamentos.module#LancamentosModule'},
+  { path: 'pessoas', loadChildren: 'app/pessoas/pessoas.module#PessoasModule'},
+
   { path: '', redirectTo: 'lancamentos', pathMatch: 'full' },
   { path: 'pagina-nao-encotrada', component: PaginaNaoEncotradaComponent },
   { path: 'nao-autorizado', component: NaoAutorizadoComponent },
