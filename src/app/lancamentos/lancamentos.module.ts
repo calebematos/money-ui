@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { TableModule } from 'primeng/table';
@@ -22,6 +22,7 @@ import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
 
     InputTextModule,
     ButtonModule,
