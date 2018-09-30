@@ -27,8 +27,10 @@
       <div class="ui-g-12 ui-md-9 ui-fluid">
         <label>Descrição</label>
         <input type="text" pInputText name="descricao" formControlName="descricao">
-        <p-message *ngIf="formulario.get('descricao').hasError('required') && formulario.get('descricao').dirty" severity="error" text="Informe uma descrição"></p-message>
-        <p-message *ngIf="formulario.get('descricao').hasError('minlength') && formulario.get('descricao').dirty" severity="error" text="Minimo de {{formulario.get('descricao').errors.minlength.requiredLength}} caracteres"></p-message>
+        <p-message *ngIf="formulario.get('descricao').hasError('obrigatoriedade') && formulario.get('descricao').dirty"
+          severity="error" text="Informe uma descrição"></p-message>
+        <p-message *ngIf="formulario.get('descricao').hasError('tamanhoMinimo') && formulario.get('descricao').dirty"
+          severity="error" text="Minimo de {{ formulario.get('descricao').errors.tamanhoMinimo.tamanho }} caracteres"></p-message>
       </div>
 
       <div class="ui-g-12 ui-md-3 ui-fluid">
