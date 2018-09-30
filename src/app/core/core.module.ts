@@ -18,6 +18,7 @@ import { ErrorHandlerService } from './error-handler.service';
 import { DashboardService } from '../dashboard/dashboard.service';
 import { CategoriaService } from '../categorias/categoria.service';
 import { NaoAutorizadoComponent } from './nao-autorizado.component';
+import { RelatoriosService } from '../relatorios/relatorios.service';
 import { LancamentoService } from '../lancamentos/lancamento.service';
 import { PaginaNaoEncotradaComponent } from './pagina-nao-encotrada.component';
 
@@ -48,6 +49,7 @@ registerLocaleData(localePt);
     ErrorHandlerService,
     CategoriaService,
     DashboardService,
+    RelatoriosService,
     AuthService,
 
     JwtHelper,
