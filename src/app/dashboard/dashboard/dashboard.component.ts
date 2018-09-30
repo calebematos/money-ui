@@ -81,7 +81,7 @@ export class DashboardComponent implements OnInit {
       .catch(erro => this.errorHandler.handler(erro));
   }
 
-  totaisPorCadaDiaMes(dados, diasDoMes) {
+  private totaisPorCadaDiaMes(dados, diasDoMes) {
     const totais: number[] = [];
     for (const dia of diasDoMes) {
       let total = 0;
@@ -95,7 +95,7 @@ export class DashboardComponent implements OnInit {
     return totais;
   }
 
-  obterDiasDoMes() {
+  private obterDiasDoMes() {
     const mes = new Date();
     const quantidade = moment(mes).daysInMonth();
     const diasDoMes: number[] = [];
