@@ -15,6 +15,7 @@ import { AuthService } from '../seguranca/auth.service';
 import { PessoaService } from '../pessoas/pessoa.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ErrorHandlerService } from './error-handler.service';
+import { DashboardService } from '../dashboard/dashboard.service';
 import { CategoriaService } from '../categorias/categoria.service';
 import { NaoAutorizadoComponent } from './nao-autorizado.component';
 import { LancamentoService } from '../lancamentos/lancamento.service';
@@ -46,6 +47,7 @@ registerLocaleData(localePt);
     PessoaService,
     ErrorHandlerService,
     CategoriaService,
+    DashboardService,
     AuthService,
 
     JwtHelper,
