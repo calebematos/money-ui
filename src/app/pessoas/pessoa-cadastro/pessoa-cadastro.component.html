@@ -1,53 +1,68 @@
 <div class="container">
   <form #pessoaForm="ngForm" autocomplete="off" (submit)="salvar(pessoaForm)">
     <div class="ui-g">
+
       <div class="ui-g-12">
         <h1>{{editando ? 'Edição de':'Nova'}} pessoa</h1>
       </div>
+
       <div class="ui-g-12 ui-fluid">
         <label>Nome</label>
         <input pInputText type="text" name="nome" [(ngModel)]="pessoa.nome" #nome="ngModel" required minlength="5">
         <p-message *ngIf="nome.hasError('required') && nome.dirty" severity="error" text="Informe o nome"></p-message>
         <p-message *ngIf="nome.hasError('minlength') && nome.dirty" severity="error" text="Mínimo de {{ nome.errors.minlength.requiredLength }} caracteres "></p-message>
       </div>
+
       <div class="ui-g-12 ui-md-9 ui-fluid">
         <label>Logradouro</label>
-        <input pInputText type="text" name="logradouro" [(ngModel)]="pessoa.endereco.logradouro" #logradouro="ngModel" required>
+        <input pInputText type="text" name="logradouro" [(ngModel)]="pessoa.endereco.logradouro" #logradouro="ngModel"
+          required>
         <p-message *ngIf="logradouro.hasError('required') && logradouro.dirty" severity="error" text="Informe o logradouro"></p-message>
       </div>
+
       <div class="ui-g-12 ui-md-3 ui-fluid">
         <label>Número</label>
         <input pInputText type="text" name="numero" [(ngModel)]="pessoa.endereco.numero" #numero="ngModel" required>
         <p-message *ngIf="numero.hasError('required') && numero.dirty" severity="error" text="Informe o numero"></p-message>
       </div>
+
       <div class="ui-g-12 ui-md-4 ui-fluid">
         <label>Complemento</label>
-        <input pInputText type="text" name="complemento" [(ngModel)]="pessoa.endereco.complemento" #complemento="ngModel" >
+        <input pInputText type="text" name="complemento" [(ngModel)]="pessoa.endereco.complemento" #complemento="ngModel">
       </div>
+
       <div class="ui-g-12 ui-md-4 ui-fluid">
         <label>Bairro</label>
         <input pInputText type="text" name="bairro" [(ngModel)]="pessoa.endereco.bairro" #bairro="ngModel" required>
         <p-message *ngIf="bairro.hasError('required') && bairro.dirty" severity="error" text="Informe o bairro"></p-message>
       </div>
+
       <div class="ui-g-12 ui-md-4 ui-fluid">
         <label>CEP</label>
-        <p-inputMask  mask="99.999-999" name="cep" [(ngModel)]="pessoa.endereco.cep" #cep="ngModel" required></p-inputMask>
+        <p-inputMask mask="99.999-999" name="cep" [(ngModel)]="pessoa.endereco.cep" #cep="ngModel" required></p-inputMask>
         <p-message *ngIf="cep.hasError('required') && cep.dirty" severity="error" text="Informe o CEP"></p-message>
       </div>
+
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label>Cidade</label>
-        <p-dropdown [options]="cidades" [autoWidth]="false" placeholder="Selecione"
-          name="cidade" [(ngModel)]="pessoa.endereco.cidade.codigo" #cidade="ngModel" required>
+        <p-dropdown [options]="cidades" [autoWidth]="false" placeholder="Selecione" name="cidade" [(ngModel)]="pessoa.endereco.cidade.codigo"
+          #cidade="ngModel" required>
         </p-dropdown>
         <p-message *ngIf="cidade.hasError('required') && cidade.dirty" severity="error" text="Informe o cidade"></p-message>
       </div>
+
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label>Estado</label>
-        <p-dropdown [options]="estados" [autoWidth]="false" placeholder="Selecione"
-          name="estado" [(ngModel)]="pessoa.endereco.cidade.estado.codigo" #estado="ngModel" required>
+        <p-dropdown [options]="estados" [autoWidth]="false" placeholder="Selecione" name="estado" [(ngModel)]="pessoa.endereco.cidade.estado.codigo"
+          #estado="ngModel" required>
         </p-dropdown>
         <p-message *ngIf="estado.hasError('required') && estado.dirty" severity="error" text="Informe o estado"></p-message>
       </div>
+
+      <div class="ui-g-12" >
+        <app-pessoa-cadastro-contato [contatos]="pessoa.contatos"></app-pessoa-cadastro-contato>
+      </div>
+
       <div class="ui-g-12">
         <p-button type="submit" label="Salvar" [disabled]="pessoaForm.invalid"></p-button>
         <p-button type="button" label="Novo" (click)="nova(pessoaForm)"></p-button>

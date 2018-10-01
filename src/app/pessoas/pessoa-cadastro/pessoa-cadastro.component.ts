@@ -1,12 +1,12 @@
-import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { MessageService } from 'primeng/api';
 
-import { ErrorHandlerService } from '../../core/error-handler.service';
 import { PessoaService } from '../pessoa.service';
-import { Pessoa } from '../../core/model';
+import { Pessoa, Contato } from '../../core/model';
+import { ErrorHandlerService } from '../../core/error-handler.service';
 
 @Component({
   selector: 'app-pessoa-cadastro',
@@ -23,6 +23,7 @@ export class PessoaCadastroComponent implements OnInit {
     { label: 'SC', value: '1' },
     { label: 'BA', value: '2' },
   ];
+
   pessoa = new Pessoa();
 
   constructor(
