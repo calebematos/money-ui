@@ -15,14 +15,9 @@ import { ErrorHandlerService } from '../../core/error-handler.service';
 })
 export class PessoaCadastroComponent implements OnInit {
 
-  cidades = [
-    { label: 'Salvador', value: '2' },
-    { label: 'Blumenau', value: '3' }
-  ];
-  estados = [
-    { label: 'SC', value: '1' },
-    { label: 'BA', value: '2' },
-  ];
+  cidades: any[];
+  estados: any[];
+  estadoSelecionado: number;
 
   pessoa = new Pessoa();
 
@@ -36,6 +31,7 @@ export class PessoaCadastroComponent implements OnInit {
 
   ngOnInit() {
     const codigoPessoa = this.route.snapshot.params['codigo'];
+    this.carregarEstados();
     if (codigoPessoa) {
       this.carregarPessoa(codigoPessoa);
     }
@@ -47,7 +43,16 @@ export class PessoaCadastroComponent implements OnInit {
 
   carregarPessoa(codigo: number) {
     this.pessoaService.buscarPorCodigo(codigo)
-      .then(pessoa => this.pessoa = pessoa)
+      .then(pessoa => {
+        this.pessoa = pessoa;
+
+        this.estadoSelecionado = this.pessoa.endereco.cidade ?
+          this.pessoa.endereco.cidade.estado.codigo : null;
+
+        if (this.estadoSelecionado) {
+          this.buscarCidadesDoEstado();
+        }
+      })
       .catch(erro => this.errorHandler.handler(erro));
   }
 
@@ -86,6 +91,26 @@ export class PessoaCadastroComponent implements OnInit {
     }.bind(this), 1);
 
     this.router.navigate(['/pessoas/nova']);
+  }
+
+  carregarEstados() {
+    this.pessoaService.obterEstados()
+      .then(response => {
+        this.estados = response.map(e => {
+          return { label: e.nome, value: e.codigo };
+        });
+      })
+      .catch(erro => this.errorHandler.handler(erro));
+  }
+
+  buscarCidadesDoEstado() {
+    this.pessoaService.obterCidadesDoEstado(this.estadoSelecionado)
+      .then(response => {
+        this.cidades = response.map(c => {
+          return { label: c.nome, value: c.codigo }
+        });
+      })
+      .catch(erro => this.errorHandler.handler(erro));
   }
 
 }

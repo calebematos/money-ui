@@ -44,22 +44,27 @@
       </div>
 
       <div class="ui-g-12 ui-md-6 ui-fluid">
-        <label>Cidade</label>
-        <p-dropdown [options]="cidades" [autoWidth]="false" placeholder="Selecione" name="cidade" [(ngModel)]="pessoa.endereco.cidade.codigo"
-          #cidade="ngModel" required>
-        </p-dropdown>
-        <p-message *ngIf="cidade.hasError('required') && cidade.dirty" severity="error" text="Informe o cidade"></p-message>
-      </div>
-
-      <div class="ui-g-12 ui-md-6 ui-fluid">
         <label>Estado</label>
-        <p-dropdown [options]="estados" [autoWidth]="false" placeholder="Selecione" name="estado" [(ngModel)]="pessoa.endereco.cidade.estado.codigo"
+        <p-dropdown [options]="estados" [autoWidth]="false" 
+          placeholder="Selecione" name="estadoSelecionado" filter="true"
+          [(ngModel)]="estadoSelecionado" (onChange)="buscarCidadesDoEstado()"
           #estado="ngModel" required>
         </p-dropdown>
         <p-message *ngIf="estado.hasError('required') && estado.dirty" severity="error" text="Informe o estado"></p-message>
       </div>
 
-      <div class="ui-g-12" >
+      <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label>Cidade</label>
+        <p-dropdown [options]="cidades" [autoWidth]="false" 
+          placeholder="Selecione" name="cidade" 
+          [(ngModel)]="pessoa.endereco.cidade.codigo"
+          #cidade="ngModel" required filter="true"
+          [disabled]="!estadoSelecionado">
+        </p-dropdown>
+        <p-message *ngIf="cidade.hasError('required') && cidade.dirty" severity="error" text="Informe o cidade"></p-message>
+      </div>
+
+      <div class="ui-g-12">
         <app-pessoa-cadastro-contato [contatos]="pessoa.contatos"></app-pessoa-cadastro-contato>
       </div>
 
