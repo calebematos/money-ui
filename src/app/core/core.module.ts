@@ -11,7 +11,6 @@ import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { MessageService, ConfirmationService } from 'primeng/api';
 
-import { IbgeService } from '../externos/ibge.service';
 import { AuthService } from '../seguranca/auth.service';
 import { PessoaService } from '../pessoas/pessoa.service';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -52,8 +51,6 @@ registerLocaleData(localePt);
     DashboardService,
     RelatoriosService,
     AuthService,
-
-    IbgeService,
 
     JwtHelper,
     MessageService,
