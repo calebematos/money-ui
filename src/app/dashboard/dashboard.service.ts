@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
 import * as moment from 'moment';
-import { AuthHttp } from 'angular2-jwt';
 
+import { MoneyHttp } from '../seguranca/money-http';
 import { environment } from './../../environments/environment';
 
 @Injectable()
@@ -10,24 +10,20 @@ export class DashboardService {
 
   lancamentoUrl = `${environment.apiUrl}/lancamentos`;
 
-  constructor(private http: AuthHttp) { }
+  constructor(private http: MoneyHttp) { }
 
 
   lancamentosPorCategoria(): Promise<Array<any>> {
-    return this.http.get(`${this.lancamentoUrl}/estatisticas/por-categoria`)
-      .toPromise()
-      .then(response => response.json());
+    return this.http.get<Array<any>>(`${this.lancamentoUrl}/estatisticas/por-categoria`)
+      .toPromise();
   }
 
   lancamentosPorDia(): Promise<Array<any>> {
-    return this.http.get(`${this.lancamentoUrl}/estatisticas/por-dia`)
+    return this.http.get<Array<any>>(`${this.lancamentoUrl}/estatisticas/por-dia`)
       .toPromise()
       .then(response => {
-        const dados = response.json();
-
-        this.converterStringParaDatas(dados);
-
-        return dados;
+        this.converterStringParaDatas(response);
+        return response;
       });
   }
 

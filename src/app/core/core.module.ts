@@ -1,4 +1,4 @@
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgModule, LOCALE_ID } from '@angular/core';
@@ -6,11 +6,12 @@ import { registerLocaleData } from '@angular/common';
 
 import localePt from '@angular/common/locales/pt';
 
-import { JwtHelper } from 'angular2-jwt';
 import { ToastModule } from 'primeng/toast';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { MessageService, ConfirmationService } from 'primeng/api';
 
+import { MoneyHttp } from '../seguranca/money-http';
 import { AuthService } from '../seguranca/auth.service';
 import { PessoaService } from '../pessoas/pessoa.service';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -28,7 +29,7 @@ registerLocaleData(localePt);
   imports: [
     CommonModule,
     RouterModule,
-    HttpModule,
+    HttpClientModule,
 
     ToastModule,
     ConfirmDialogModule
@@ -51,8 +52,9 @@ registerLocaleData(localePt);
     DashboardService,
     RelatoriosService,
     AuthService,
+    MoneyHttp,
 
-    JwtHelper,
+    JwtHelperService,
     MessageService,
     ConfirmationService,
 

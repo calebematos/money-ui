@@ -3,26 +3,22 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Http, RequestOptions } from '@angular/http';
 
-import { AuthHttp, AuthConfig } from 'angular2-jwt';
 import { ButtonModule } from 'primeng/button';
+import { JwtModule } from '@auth0/angular-jwt';
 import { InputTextModule } from 'primeng/inputtext';
 
 import { MoneyHttp } from './money-http';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 import { LogoutService } from './logout.service';
+import { environment } from './../../environments/environment';
 import { SegurancaRoutingModule } from './seguranca-routing.module';
 import { LoginFormComponent } from './login-form/login-form.component';
 
-
-export function authHttpServiceFactory(auth: AuthService, http: Http, options: RequestOptions) {
-  const config = new AuthConfig({
-    globalHeaders: [
-      { 'Content-Type': 'application/json' }
-    ]
-  });
-  return new MoneyHttp(auth, config, http, options);
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
 }
+
 
 @NgModule({
   imports: [
@@ -30,17 +26,19 @@ export function authHttpServiceFactory(auth: AuthService, http: Http, options: R
     FormsModule,
     SegurancaRoutingModule,
 
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: environment.tokenWhitelistedDomains,
+        blacklistedRoutes: environment.tokenBlacklistedRoutes
+      }
+    }),
 
     InputTextModule,
     ButtonModule
   ],
   declarations: [LoginFormComponent],
   providers: [
-    {
-      provide: AuthHttp,
-      useFactory: authHttpServiceFactory,
-      deps: [AuthService, Http, RequestOptions]
-    },
     AuthGuard,
     LogoutService
   ]

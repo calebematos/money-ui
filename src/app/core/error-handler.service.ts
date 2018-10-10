@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
-import { Response } from '@angular/http';
 import { Injectable } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
 
 import { MessageService } from 'primeng/api';
 
@@ -22,18 +22,17 @@ export class ErrorHandlerService {
     } else if (errorResponse instanceof NotAuthenticatedErro) {
       msg = 'Sua sessão expirou!';
       this.router.navigate(['/login']);
-    } else if (errorResponse instanceof Response &&
+    } else if (errorResponse instanceof HttpErrorResponse &&
       errorResponse.status >= 400 && errorResponse.status < 500) {
 
-      let errors;
       msg = 'Ocorreu um erro ao processar a sua solicitação';
 
       if (errorResponse.status === 403) {
         msg = 'Você não tem permissão para executar essa ação!';
       }
       try {
-        errors = errorResponse.json();
-        msg = errors[0].mensagemUsuario;
+
+        msg = errorResponse.error[0].mensagemUsuario;
       } catch (e) { }
       console.error('Ocorreu um erro', errorResponse);
     } else {
