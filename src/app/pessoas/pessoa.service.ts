@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpParams } from '@angular/common/http';
+import { HttpParams, HttpHeaders } from '@angular/common/http';
 
 import { MoneyHttp } from '../seguranca/money-http';
 import { Pessoa, Estado, Cidade } from './../core/model';
@@ -67,7 +67,10 @@ export class PessoaService {
   }
 
   mudarStatus(codigo: number, status: boolean): Promise<void> {
-    return this.http.put(`${this.pessoaUrl}/${codigo}/ativo`, !status)
+    const headers = new HttpHeaders()
+      .append('Content-Type', 'application/json');
+    
+    return this.http.put(`${this.pessoaUrl}/${codigo}/ativo`, !status, { headers })
       .toPromise()
       .then(() => null);
 
