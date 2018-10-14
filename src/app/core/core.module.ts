@@ -2,7 +2,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import localePt from '@angular/common/locales/pt';
 
@@ -15,6 +15,7 @@ import { MoneyHttp } from '../seguranca/money-http';
 import { AuthService } from '../seguranca/auth.service';
 import { PessoaService } from '../pessoas/pessoa.service';
 import { NavbarComponent } from './navbar/navbar.component';
+import { JwtInterceptor } from '../seguranca/JwtInterceptor';
 import { ErrorHandlerService } from './error-handler.service';
 import { DashboardService } from '../dashboard/dashboard.service';
 import { CategoriaService } from '../categorias/categoria.service';
@@ -57,7 +58,7 @@ registerLocaleData(localePt);
     JwtHelperService,
     MessageService,
     ConfirmationService,
-
+    { provide: HTTP_INTERCEPTORS , useClass: JwtInterceptor , multi: true },
     { provide: LOCALE_ID, useValue: 'pt-BR' }
   ]
 })
