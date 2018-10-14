@@ -8,13 +8,14 @@ import { environment } from './../../environments/environment';
 @Injectable()
 export class AuthService {
 
-  authTokenUrl = `${environment.apiUrl}/oauth/token`;
+  authTokenUrl: string;
   jwtPayload: any;
 
   constructor(
     private http: HttpClient,
     private jwtHelper: JwtHelperService
   ) {
+    this.authTokenUrl = `${environment.apiUrl}/oauth/token`;
     this.carregarToken();
   }
 
