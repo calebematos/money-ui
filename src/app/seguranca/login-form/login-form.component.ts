@@ -18,6 +18,7 @@ export class LoginFormComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.auth.limparAccessToken();
   }
 
   login(usuario: string, senha: string) {
