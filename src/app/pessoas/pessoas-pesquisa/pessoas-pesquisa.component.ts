@@ -9,7 +9,8 @@ import { ErrorHandlerService } from '../../core/error-handler.service';
 @Component({
   selector: 'app-pessoas-pesquisa',
   templateUrl: './pessoas-pesquisa.component.html',
-  styleUrls: ['./pessoas-pesquisa.component.css']
+  styleUrls: ['./pessoas-pesquisa.component.css'],
+  preserveWhitespaces: true
 })
 export class PessoasPesquisaComponent implements OnInit {
 

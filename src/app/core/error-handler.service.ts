@@ -22,7 +22,7 @@ export class ErrorHandlerService {
     } else if (errorResponse instanceof NotAuthenticatedError) {
       msg = 'Sua sessão expirou!';
       this.router.navigate(['/login']);
-      
+
     } else if (errorResponse instanceof HttpErrorResponse &&
       errorResponse.status >= 400 && errorResponse.status < 500) {
 

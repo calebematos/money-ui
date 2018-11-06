@@ -14,7 +14,8 @@ import { Lancamento } from '../../core/model';
 @Component({
   selector: 'app-lancamento-cadastro',
   templateUrl: './lancamento-cadastro.component.html',
-  styleUrls: ['./lancamento-cadastro.component.css']
+  styleUrls: ['./lancamento-cadastro.component.css'],
+  preserveWhitespaces: true
 })
 export class LancamentoCadastroComponent implements OnInit {
 
