@@ -27,7 +27,7 @@ export class NavbarComponent implements OnInit {
   logout() {
     this.logoutService.logout()
       .then(() => {
-        this.router.navigate(['/login']);
+        this.router.navigate(['/mymoney/login']);
       })
       .catch(erro => this.errorHandler.handler(erro));
 

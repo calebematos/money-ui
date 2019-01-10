@@ -70,7 +70,7 @@ export class PessoaCadastroComponent implements OnInit {
       .then(pessoaAdicionado => {
         this.messageService.add({ severity: 'success', summary: 'Pessoa adicionada com sucesso!' });
 
-        this.router.navigate(['/pessoas', pessoaAdicionado.codigo]);
+        this.router.navigate(['/mymoney/pessoas', pessoaAdicionado.codigo]);
       })
       .catch(erro => this.errorHandler.handler(erro));
   }
@@ -91,7 +91,7 @@ export class PessoaCadastroComponent implements OnInit {
       this.pessoa = new Pessoa();
     }.bind(this), 1);
 
-    this.router.navigate(['/pessoas/nova']);
+    this.router.navigate(['/mymoney/pessoas/nova']);
   }
 
   carregarEstados() {

@@ -6,15 +6,15 @@ import { PaginaNaoEncotradaComponent } from './core/pagina-nao-encotrada.compone
 
 const router: Routes = [
 
-  { path: 'lancamentos', loadChildren: 'app/lancamentos/lancamentos.module#LancamentosModule' },
-  { path: 'pessoas', loadChildren: 'app/pessoas/pessoas.module#PessoasModule' },
-  { path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#DashboardModule' },
-  { path: 'relatorios', loadChildren: 'app/relatorios/relatorios.module#RelatoriosModule' },
+  { path: 'mymoney/lancamentos', loadChildren: 'app/lancamentos/lancamentos.module#LancamentosModule' },
+  { path: 'mymoney/pessoas', loadChildren: 'app/pessoas/pessoas.module#PessoasModule' },
+  { path: 'mymoney/dashboard', loadChildren: 'app/dashboard/dashboard.module#DashboardModule' },
+  { path: 'mymoney/relatorios', loadChildren: 'app/relatorios/relatorios.module#RelatoriosModule' },
 
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  { path: 'pagina-nao-encotrada', component: PaginaNaoEncotradaComponent },
-  { path: 'nao-autorizado', component: NaoAutorizadoComponent },
-  { path: '**', redirectTo: 'pagina-nao-encotrada' }
+  { path: 'mymoney/', redirectTo: 'mymoney/dashboard', pathMatch: 'full' },
+  { path: 'mymoney/pagina-nao-encotrada', component: PaginaNaoEncotradaComponent },
+  { path: 'mymoney/nao-autorizado', component: NaoAutorizadoComponent },
+  { path: 'mymoney/**', redirectTo: 'pagina-nao-encotrada' }
 ];
 
 @NgModule({
