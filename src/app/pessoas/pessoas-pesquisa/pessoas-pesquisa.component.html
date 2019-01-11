@@ -39,7 +39,7 @@
                 : 'Inativo'}}</a></td>
             <td>
               <button pButton type="button" icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
-                [routerLink]="['/mymoney/pessoas', pessoa.codigo]"></button>
+                [routerLink]="['/pessoas', pessoa.codigo]"></button>
               <button pButton type="button" icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top" (click)="confirmarExclusao(pessoa)"></button>
             </td>
           </tr>
@@ -56,7 +56,7 @@
     </div>
 
     <div class="ui-g-12">
-      <button pButton type="button" label="Nova pessoa" routerLink="/mymoney/pessoas/nova"></button>
+      <button pButton type="button" label="Nova pessoa" routerLink="/pessoas/nova"></button>
     </div>
   </div>
 

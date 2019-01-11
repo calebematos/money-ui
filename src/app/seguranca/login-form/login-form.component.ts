@@ -23,7 +23,7 @@ export class LoginFormComponent implements OnInit {
 
   login(usuario: string, senha: string) {
     this.auth.login(usuario, senha)
-    .then(() => this.router.navigate(['/mymoney/dashboard']) )
+    .then(() => this.router.navigate(['/']) )
     .catch(erro => this.errorHandler.handler(erro));
   }
 

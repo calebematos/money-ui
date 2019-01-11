@@ -111,7 +111,7 @@ export class LancamentoCadastroComponent implements OnInit {
       .then(lancamentoAdicionado => {
         this.messageService.add({ severity: 'success', summary: 'Lançamento adicionado com sucesso!' });
 
-        this.router.navigate(['/mymoney/lancamentos', lancamentoAdicionado.codigo]);
+        this.router.navigate(['/lancamentos', lancamentoAdicionado.codigo]);
       })
       .catch(erro => this.errorHandler.handler(erro));
   }
@@ -153,7 +153,7 @@ export class LancamentoCadastroComponent implements OnInit {
       this.lancamento = new Lancamento();
     }.bind(this), 1);
 
-    this.router.navigate(['/mymoney/lancamentos/novo']);
+    this.router.navigate(['lancamentos/novo']);
   }
 
 }

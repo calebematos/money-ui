@@ -22,7 +22,7 @@
 
       <div class="ui-g-12 ui-md-3 ui-fluid">
         <label>Número</label>
-        <input pInputText type="text" pKeyFilter="int" name="numero" [(ngModel)]="pessoa.endereco.numero" #numero="ngModel" required>
+        <input pInputText type="text" name="numero" [(ngModel)]="pessoa.endereco.numero" #numero="ngModel" required>
         <p-message *ngIf="numero.hasError('required') && numero.dirty" severity="error" text="Informe o numero"></p-message>
       </div>
 
@@ -45,7 +45,7 @@
 
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label>Estado</label>
-        <p-dropdown [options]="estados" [autoWidth]="false"
+        <p-dropdown [options]="estados" [autoWidth]="false" 
           placeholder="Selecione" name="estadoSelecionado" filter="true"
           [(ngModel)]="estadoSelecionado" (onChange)="buscarCidadesDoEstado()"
           #estado="ngModel" required>
@@ -55,8 +55,8 @@
 
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label>Cidade</label>
-        <p-dropdown [options]="cidades" [autoWidth]="false"
-          placeholder="Selecione" name="cidade"
+        <p-dropdown [options]="cidades" [autoWidth]="false" 
+          placeholder="Selecione" name="cidade" 
           [(ngModel)]="pessoa.endereco.cidade.codigo"
           #cidade="ngModel" required filter="true"
           [disabled]="!estadoSelecionado">
@@ -71,7 +71,7 @@
       <div class="ui-g-12">
         <p-button type="submit" label="Salvar" [disabled]="pessoaForm.invalid"></p-button>
         <p-button type="button" label="Novo" (click)="nova(pessoaForm)"></p-button>
-        <a routerLink="/mymoney/pessoas">Voltar para a pesquisa</a>
+        <a routerLink="/pessoas">Voltar para a pesquisa</a>
       </div>
 
     </div>

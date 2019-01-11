@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginFormComponent } from './login-form/login-form.component';
 
 const routes: Routes = [
-  { path: 'mymoney/login', component: LoginFormComponent }
+  { path: 'login', component: LoginFormComponent }
 ];
 
 @NgModule({
