@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { URLSearchParams, ResponseContentType } from '@angular/http';
 import { HttpParams } from '@angular/common/http';
 
 import * as moment from 'moment';
