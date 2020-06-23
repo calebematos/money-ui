@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
-import { LazyLoadEvent, MessageService, ConfirmationService } from 'primeng/components/common/api';
+import { LazyLoadEvent, MessageService, ConfirmationService } from 'primeng/api';
 
 import { AuthService } from './../../seguranca/auth.service';
 import { CalendarioPtBr } from './../../shared/Calendario-ptBr';

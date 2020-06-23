@@ -45,7 +45,7 @@
 
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label>Estado</label>
-        <p-dropdown [options]="estados" [autoWidth]="false" 
+        <p-dropdown [options]="estados" 
           placeholder="Selecione" name="estadoSelecionado" filter="true"
           [(ngModel)]="estadoSelecionado" (onChange)="buscarCidadesDoEstado()"
           #estado="ngModel" required>
@@ -55,7 +55,7 @@
 
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label>Cidade</label>
-        <p-dropdown [options]="cidades" [autoWidth]="false" 
+        <p-dropdown [options]="cidades" 
           placeholder="Selecione" name="cidade" 
           [(ngModel)]="pessoa.endereco.cidade.codigo"
           #cidade="ngModel" required filter="true"
