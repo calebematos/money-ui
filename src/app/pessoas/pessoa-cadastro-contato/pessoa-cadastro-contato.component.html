@@ -20,7 +20,7 @@
         <td>{{ contato.nome }}</td>
         <td>{{ contato.email}}</td>
         <td>{{ contato.telefone}}</td>
-        <td>
+        <td class="col-acoes">
           <button pButton type="button" icon="pi pi-pencil" pTooltip="Editar"
             tooltipPosition="top" (click)="prepararEdicaoContato(contato, indice)"></button>
           <button pButton type="button" icon="pi pi-trash" pTooltip="Excluir"

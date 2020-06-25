@@ -50,7 +50,7 @@ body .ui-table .ui-table-thead > tr > th {
 }
 
 .col-acoes {
-  width: 900px;
+  width: 100px;
   text-align: center
 }
 
@@ -64,4 +64,14 @@ body .ui-table .ui-table-thead > tr > th {
 
 .ui-overflow-hidden {
   position: inherit !important;
+}
+
+.col-acoes .ui-button {
+  margin: 1px;
+}
+
+.relatorio-filtro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
