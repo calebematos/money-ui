@@ -5,6 +5,7 @@ import * as moment from 'moment';
 
 import { DashboardService } from '../dashboard.service';
 import { ErrorHandlerService } from '../../core/error-handler.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -32,7 +33,8 @@ export class DashboardComponent implements OnInit {
   constructor(
     private dashboardService: DashboardService,
     private errorHandler: ErrorHandlerService,
-    private decimalPipe: DecimalPipe
+    private decimalPipe: DecimalPipe,
+    public translateService: TranslateService
   ) { }
 
   ngOnInit() {

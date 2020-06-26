@@ -2,17 +2,17 @@
   <div class="ui-g">
 
     <div class="ui-g-12">
-      <h1>DashBoard</h1>
+      <h1>{{'DashBoardTitle' | translate}}</h1>
     </div>
 
     <div class="ui-g-12 ui-md-6">
-      <p-panel header="Lançamentos por categoria">
+      <p-panel header="{{'categoryEntry' | translate}}">
           <p-chart type="pie" [data]="pieChartData" [options]="options"></p-chart>
       </p-panel>
     </div>
 
     <div class="ui-g-12 ui-md-6">
-      <p-panel header="Lançamentos por dia">
+      <p-panel header="{{'dayEntry' | translate}}">
           <p-chart type="line" [data]="lineChartData" [options]="options"></p-chart>
       </p-panel>
     </div>

@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TranslateLoader, TranslateModule, TranslatePipe } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient } from '@angular/common/http';
 
 import localePt from '@angular/common/locales/pt';
 
@@ -33,7 +36,15 @@ registerLocaleData(localePt);
     HttpClientModule,
 
     ToastModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpTranslateLoader,
+        deps: [HttpClient]
+      }
+    }),
   ],
   declarations: [
     NavbarComponent,
@@ -43,7 +54,8 @@ registerLocaleData(localePt);
   exports: [
     NavbarComponent,
     ToastModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    TranslateModule
   ],
   providers: [
     LancamentoService,
@@ -63,3 +75,7 @@ registerLocaleData(localePt);
   ]
 })
 export class CoreModule { }
+
+export function httpTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
