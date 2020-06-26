@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
+import { TranslateService } from '@ngx-translate/core';
 import { LazyLoadEvent, MessageService, ConfirmationService } from 'primeng/api';
 
 import { AuthService } from './../../seguranca/auth.service';
@@ -19,6 +20,9 @@ export class LancamentosPesquisaComponent implements OnInit {
   lancamentos = [];
   filtro = new LancamentoFiltro();
   totalRegistros = 0;
+  msgConfirmaExclusao = '';
+  msgExclusaoSucesso = '';
+
   @ViewChild('tabela', { static: true }) tabela;
 
   constructor(
@@ -26,10 +30,21 @@ export class LancamentosPesquisaComponent implements OnInit {
     private auth: AuthService,
     private errorHandler: ErrorHandlerService,
     private messageService: MessageService,
-    private confirmation: ConfirmationService
+    private confirmation: ConfirmationService,
+    private translateService: TranslateService
   ) { }
 
   ngOnInit() {
+    this.traduzirMensagens();
+  }
+
+  traduzirMensagens() {
+    this.translateService.get('msg-confirm-delete').subscribe(res => {
+      this.msgConfirmaExclusao = res
+    })
+    this.translateService.get('msg-delete-success').subscribe(res => {
+      this.msgExclusaoSucesso = res
+    })
   }
 
   pesquisar(pagina = 0) {
@@ -50,7 +65,7 @@ export class LancamentosPesquisaComponent implements OnInit {
 
   confirmarExclusao(lancamento: any) {
     this.confirmation.confirm({
-      message: 'Tem certeza que deseja excluir?',
+      message: this.msgConfirmaExclusao,
       accept: () => this.excluir(lancamento)
     });
   }
@@ -65,7 +80,7 @@ export class LancamentosPesquisaComponent implements OnInit {
         } else {
           this.tabela.first = 0;
         }
-        this.messageService.add({ severity: 'success', summary: 'Lançamento excluído com sucesso!' });
+        this.messageService.add({ severity: 'success', summary: this.msgExclusaoSucesso });
       })
       .catch(erro => this.errorHandler.handler(erro));
 

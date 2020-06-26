@@ -1,7 +1,23 @@
 {
-    "DashBoardTitle":"DashBoard",
-    "categoryEntry":"Lançamentos por categoria",
-    "dayEntry":"Lançamentos por dia",
-    "revenuesLabel":"Receitas",
-    "expensesLabel":"Despesas"
+    "DashBoardTitle": "DashBoard",
+    "categoryEntry": "Lançamentos por categoria",
+    "dayEntry": "Lançamentos por dia",
+    "revenues-label": "Receitas",
+    "expenses-label": "Despesas",
+
+    "entries": "Lançamentos",
+    "description-label": "Descrição",
+    "dueDate-label": "Vencimento",
+    "until": "até",
+    "search-button": "Pesquisar",
+    "person-header": "Pessoa",
+    "description-header": "Descrição",
+    "dueDate-header": "Vencimento",
+    "payment-header": "Pagamento",
+    "value-header": "Valor",
+    "edit": "Editar",
+    "delete": "Excluir",
+    "newEntry": "Novo lançamento",
+    "msg-confirm-delete": "Tem certeza que deseja excluir?",
+    "msg-delete-success": "Lançamento excluído com sucesso!"
 }

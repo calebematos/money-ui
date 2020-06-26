@@ -36,7 +36,7 @@ export class DashboardComponent implements OnInit {
     private dashboardService: DashboardService,
     private errorHandler: ErrorHandlerService,
     private decimalPipe: DecimalPipe,
-    public translateService: TranslateService
+    private translateService: TranslateService
   ) { }
 
   ngOnInit() {
@@ -46,10 +46,10 @@ export class DashboardComponent implements OnInit {
   }
 
   traduzirLabel() {
-    this.translateService.get('revenuesLabel').subscribe(res => {
+    this.translateService.get('revenues-label').subscribe(res => {
       this.labelReceitas = res
     })
-    this.translateService.get('expensesLabel').subscribe(res => {
+    this.translateService.get('expenses-label').subscribe(res => {
       this.labelDespesas = res
     })
   }

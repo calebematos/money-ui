@@ -2,7 +2,23 @@
     "DashBoardTitle":"DashBoard",
     "categoryEntry":"Entry by category",
     "dayEntry":"Entry by day",
-    "revenuesLabel":"Revenues",
-    "expensesLabel":"Expenses"
+    "revenues-label":"Revenues",
+    "expenses-label":"Expenses",
 
+    "entries":"Entries",
+    "description-label":"Description",
+    "dueDate-label":"Due date",
+    "until":"until",
+    "search-button":"Search",
+    "person-header":"Person",
+    "description-header":"Description",
+    "dueDate-header":"Due date",
+    "payment-header":"Payment",
+    "value-header":"Value",
+    "noEntryFound":"No entry found",
+    "edit":"Edit",
+    "delete":"Delete",
+    "newEntry": "New entry",
+    "msg-confirm-delete":"Are you sure you want to delete?",
+    "msg-delete-success":"Entry deleted successfully!"
 }
