@@ -1,7 +1,7 @@
 {
-    "DashBoardTitle":"DashBoard - pt",
+    "DashBoardTitle":"DashBoard",
     "categoryEntry":"Lançamentos por categoria",
     "dayEntry":"Lançamentos por dia",
-    "revenue":"Receitas",
-    "expense":"Despesas"
+    "revenuesLabel":"Receitas",
+    "expensesLabel":"Despesas"
 }

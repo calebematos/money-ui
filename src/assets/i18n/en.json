@@ -1,8 +1,8 @@
 {
-    "DashBoardTitle":"DashBoard - en",
+    "DashBoardTitle":"DashBoard",
     "categoryEntry":"Entry by category",
     "dayEntry":"Entry by day",
-    "revenue":"Revenue",
-    "expense":"Expense"
+    "revenuesLabel":"Revenues",
+    "expensesLabel":"Expenses"
 
 }

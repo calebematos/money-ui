@@ -29,6 +29,8 @@ export class DashboardComponent implements OnInit {
       }
     }
   };
+  labelReceitas = '';
+  labelDespesas = '';
 
   constructor(
     private dashboardService: DashboardService,
@@ -38,8 +40,18 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.traduzirLabel();
     this.configurarGraficoPizza();
-    this.configurarGraficoLinha();
+    this.configurarGraficoLinha();   
+  }
+
+  traduzirLabel() {
+    this.translateService.get('revenuesLabel').subscribe(res => {
+      this.labelReceitas = res
+    })
+    this.translateService.get('expensesLabel').subscribe(res => {
+      this.labelDespesas = res
+    })
   }
 
   configurarGraficoPizza() {
@@ -69,11 +81,11 @@ export class DashboardComponent implements OnInit {
           labels: diasDoMes,
           datasets: [
             {
-              label: 'Receitas',
+              label: this.labelReceitas,
               data: totaisReceitas,
               borderColor: '#3366CC'
             }, {
-              label: 'Despesas',
+              label: this.labelDespesas,
               data: totaisDespesas,
               borderColor: '#D62B00'
             }

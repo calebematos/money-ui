@@ -8,11 +8,13 @@ import {PanelModule} from 'primeng/panel';
 import { SharedModule } from './../shared/shared.module';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
-
+    TranslateModule,
+    
     PanelModule,
     ChartModule,
 
