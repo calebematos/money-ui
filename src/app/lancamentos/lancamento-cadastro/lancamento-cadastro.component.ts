@@ -1,15 +1,16 @@
-import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms';
 
 import { MessageService } from 'primeng/api';
+import { TranslateService } from '@ngx-translate/core';
 
+import { Lancamento } from '../../core/model';
 import { LancamentoService } from './../lancamento.service';
-import { ErrorHandlerService } from './../../core/error-handler.service';
+import { PessoaService } from '../../pessoas/pessoa.service';
 import { CalendarioPtBr } from './../../shared/Calendario-ptBr';
 import { CategoriaService } from '../../categorias/categoria.service';
-import { PessoaService } from '../../pessoas/pessoa.service';
-import { Lancamento } from '../../core/model';
+import { ErrorHandlerService } from './../../core/error-handler.service';
 
 @Component({
   selector: 'app-lancamento-cadastro',
@@ -19,16 +20,16 @@ import { Lancamento } from '../../core/model';
 })
 export class LancamentoCadastroComponent implements OnInit {
 
-
-  tipos = [
-    { label: 'Receita', value: 'RECEITA' },
-    { label: 'Despesa', value: 'DESPESA' }
-  ];
-
+  tipos = [];
   categorias = [];
   pessoas = [];
-  // lancamento = new Lancamento();
   formulario: FormGroup;
+  labelReceita = "";
+  labelDespesa = "";
+  labelRecebimento = "";
+  labelPagamento = "";
+  msgLancamentoCriado = '';
+  msgLancamentoAtualizado = '';
 
   br = CalendarioPtBr.pt_BR;
 
@@ -40,7 +41,8 @@ export class LancamentoCadastroComponent implements OnInit {
     private errorHandler: ErrorHandlerService,
     private route: ActivatedRoute,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private translateService: TranslateService
   ) { }
 
   ngOnInit() {
@@ -51,8 +53,40 @@ export class LancamentoCadastroComponent implements OnInit {
       this.carregarLancamento(codigoLancamento);
     }
 
+    this.traduzirMensagens();
     this.carregarCategorias();
     this.carregarPessoas();
+    this.carregarTipos();
+  }
+
+  traduzirMensagens() {
+    this.translateService.get('revenue-label').subscribe(res => {
+      this.labelReceita = res;
+      console.log(res)
+    });
+    this.translateService.get('expense-label').subscribe(res => {
+      this.labelDespesa = res;
+    });
+    this.translateService.get('newEntrySuccess-msg').subscribe(res => {
+      this.msgLancamentoCriado = res;
+    });
+    this.translateService.get('msg-update-entry-success').subscribe(res => {
+      this.msgLancamentoAtualizado = res;
+    });
+
+    this.translateService.get('receivement-label').subscribe(res => {
+      this.labelRecebimento = res;
+    });
+    this.translateService.get('payment-label').subscribe(res => {
+      this.labelPagamento = res;
+    });
+  }
+
+  carregarTipos() {
+    this.tipos = [
+      { label: this.labelReceita, value: 'RECEITA' },
+      { label: this.labelDespesa, value: 'DESPESA' }
+    ]
   }
 
   configurarFormulario() {
@@ -109,7 +143,7 @@ export class LancamentoCadastroComponent implements OnInit {
   adicionarLancamento() {
     this.lancamentoService.adicionar(this.formulario.value)
       .then(lancamentoAdicionado => {
-        this.messageService.add({ severity: 'success', summary: 'Lançamento adicionado com sucesso!' });
+        this.messageService.add({ severity: 'success', summary: this.msgLancamentoCriado });
 
         this.router.navigate(['/lancamentos', lancamentoAdicionado.codigo]);
       })
@@ -121,7 +155,7 @@ export class LancamentoCadastroComponent implements OnInit {
       .then(lancamento => {
         this.formulario.patchValue(lancamento);
 
-        this.messageService.add({ severity: 'success', summary: 'Lançamento atualizado com sucesso!' });
+        this.messageService.add({ severity: 'success', summary: this.msgLancamentoAtualizado });
       })
       .catch(erro => this.errorHandler.handler(erro));
   }

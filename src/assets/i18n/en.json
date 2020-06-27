@@ -18,7 +18,21 @@
     "noEntryFound":"No entry found",
     "edit":"Edit",
     "delete":"Delete",
+    
     "newEntry": "New entry",
-    "msg-confirm-delete":"Are you sure you want to delete?",
-    "msg-delete-success":"Entry deleted successfully!"
+    "confirmDelete-msg":"Are you sure you want to delete?",
+    "deleteEntrySuccess-msg":"Entry deleted successfully!",
+    "newEntrySuccess-msg":"Enty successfully added!",
+    "revenue-label":"Revenue",
+    "expense-label":"Expense",
+    "select-placeholder":"Select",
+    "payment-label":"Payment",
+    "receivement-label":"Receivement",
+    "value-label": "Value",
+    "category-label": "Category",
+    "person-label": "Person",
+    "observation-label":"Observation",
+    "backToSearc-msg":"Back to search",
+    "save-button":"Save",
+    "new-button":"New"
 }

@@ -39,10 +39,10 @@ export class LancamentosPesquisaComponent implements OnInit {
   }
 
   traduzirMensagens() {
-    this.translateService.get('msg-confirm-delete').subscribe(res => {
+    this.translateService.get('confirmDelete-msg').subscribe(res => {
       this.msgConfirmaExclusao = res
     })
-    this.translateService.get('msg-delete-success').subscribe(res => {
+    this.translateService.get('deleteEntrySuccess-msg').subscribe(res => {
       this.msgExclusaoSucesso = res
     })
   }

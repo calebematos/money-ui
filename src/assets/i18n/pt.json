@@ -17,7 +17,22 @@
     "value-header": "Valor",
     "edit": "Editar",
     "delete": "Excluir",
+    
     "newEntry": "Novo lançamento",
-    "msg-confirm-delete": "Tem certeza que deseja excluir?",
-    "msg-delete-success": "Lançamento excluído com sucesso!"
+    "confirmDelete-msg": "Tem certeza que deseja excluir?",
+    "deleteEntrySuccess-msg": "Lançamento excluído com sucesso!",
+    "newEntrySuccess-msg":"Lançamento adicionado com sucesso!",
+    "msg-update-entry-success":"Lançamento adicionado com sucesso!",
+    "revenue-label": "Receita",
+    "expense-label": "Despesa",
+    "select-placeholder":"Selecione",
+    "payment-label":"Pagamento",
+    "receivement-label":"Recebimento",
+    "value-label": "Valor",
+    "category-label": "Categoria",
+    "person-label": "Pessoa",
+    "observation-label":"Observação",
+    "backToSearc-msg":"Voltar para a pesquisa",
+    "save-button":"Salvar",
+    "new-button":"Novo"
 }
