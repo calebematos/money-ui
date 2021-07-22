@@ -50,7 +50,7 @@ export class LancamentosPesquisaComponent implements OnInit {
 
   confirmarExclusao(lancamento: any) {
     this.confirmation.confirm({
-      message: 'Tem certeza que deseja excluir?',
+      message: 'Are you sure you want to delete?',
       accept: () => this.excluir(lancamento)
     });
   }
@@ -65,7 +65,7 @@ export class LancamentosPesquisaComponent implements OnInit {
         } else {
           this.tabela.first = 0;
         }
-        this.messageService.add({ severity: 'success', summary: 'Lançamento excluído com sucesso!' });
+        this.messageService.add({ severity: 'success', summary: 'Entry deleted successfully!' });
       })
       .catch(erro => this.errorHandler.handler(erro));
 

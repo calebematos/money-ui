@@ -67,11 +67,11 @@ export class DashboardComponent implements OnInit {
           labels: diasDoMes,
           datasets: [
             {
-              label: 'Receitas',
+              label: 'Revenues',
               data: totaisReceitas,
               borderColor: '#3366CC'
             }, {
-              label: 'Despesas',
+              label: 'Expenses',
               data: totaisDespesas,
               borderColor: '#D62B00'
             }
