@@ -12,11 +12,11 @@
     <li class="navbar-menuitem" routerLinkActive="ativo"
       *ngIf="authService.temPermissao('ROLE_PESQUISAR_LANCAMENTO')"><a (click)="exibindoMenu = !exibindoMenu" routerLink="/dashboard">Dashboard</a></li>
     <li class="navbar-menuitem" routerLinkActive="ativo"
-      *ngIf="authService.temPermissao('ROLE_PESQUISAR_LANCAMENTO')"><a (click)="exibindoMenu = !exibindoMenu" routerLink="/lancamentos">Lançamentos</a></li>
+      *ngIf="authService.temPermissao('ROLE_PESQUISAR_LANCAMENTO')"><a (click)="exibindoMenu = !exibindoMenu" routerLink="/lancamentos">Entries</a></li>
       <li class="navbar-menuitem" routerLinkActive="ativo"
-      *ngIf="authService.temPermissao('ROLE_PESQUISAR_PESSOA')"><a (click)="exibindoMenu = !exibindoMenu" routerLink="/pessoas">Pessoas</a></li>
+      *ngIf="authService.temPermissao('ROLE_PESQUISAR_PESSOA')"><a (click)="exibindoMenu = !exibindoMenu" routerLink="/pessoas">People</a></li>
       <li class="navbar-menuitem" routerLinkActive="ativo"
-        *ngIf="authService.temPermissao('ROLE_PESQUISAR_LANCAMENTO')"><a (click)="exibindoMenu = !exibindoMenu" routerLink="/relatorios/lancamentos">Relatorios</a></li>
+        *ngIf="authService.temPermissao('ROLE_PESQUISAR_LANCAMENTO')"><a (click)="exibindoMenu = !exibindoMenu" routerLink="/relatorios/lancamentos">Reports</a></li>
     <li class="navbar-menuitem"><a href="javascript:;" (click)="logout()">Logout</a></li>
   </ul>
 
