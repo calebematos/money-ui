@@ -1,64 +1,127 @@
 <p-panel>
-    <p-header>
-        <div class="ui-helper-clearfix">
-            <span class="ui-panel-title" style="font-size:16px;display:inline-block;margin-top:2px">Contatos</span>
-            <button pButton type="button" style="float:right" class="ui-button-secondary" label="Novo"
-              icon="pi pi-plus" (click)="prepararNovoContato()"></button>
-        </div>
-    </p-header>
+  <p-header>
+    <div class="ui-helper-clearfix">
+      <span
+        class="ui-panel-title"
+        style="font-size: 16px; display: inline-block; margin-top: 2px"
+        >Contacts</span
+      >
+      <button
+        pButton
+        type="button"
+        style="float: right"
+        class="ui-button-secondary"
+        label="New"
+        icon="pi pi-plus"
+        (click)="prepararNovoContato()"
+      ></button>
+    </div>
+  </p-header>
   <p-table [value]="contatos" [responsive]="true">
     <ng-template pTemplate="header">
       <tr>
-        <th>Nome</th>
+        <th>Name</th>
         <th>E-mail</th>
-        <th>Telefone</th>
+        <th>Phone</th>
         <th class="col-acoes-header"></th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-contato let-indice="rowIndex">
       <tr>
         <td>{{ contato.nome }}</td>
-        <td>{{ contato.email}}</td>
-        <td>{{ contato.telefone}}</td>
+        <td>{{ contato.email }}</td>
+        <td>{{ contato.telefone }}</td>
         <td class="col-acoes">
-          <button pButton type="button" icon="pi pi-pencil" pTooltip="Editar"
-            tooltipPosition="top" (click)="prepararEdicaoContato(contato, indice)"></button>
-          <button pButton type="button" icon="pi pi-trash" pTooltip="Excluir"
-            tooltipPosition="top" (click)="removerContato(indice)"></button>
+          <button
+            pButton
+            type="button"
+            icon="pi pi-pencil"
+            pTooltip="Edit"
+            tooltipPosition="top"
+            (click)="prepararEdicaoContato(contato, indice)"
+          ></button>
+          <button
+            pButton
+            type="button"
+            icon="pi pi-trash"
+            pTooltip="Delete"
+            tooltipPosition="top"
+            (click)="removerContato(indice)"
+          ></button>
         </td>
       </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage">
       <tr>
-        <td colspan="4">Nenhum contato cadastrado.</td>
+        <td colspan="4">No contact registered.</td>
       </tr>
     </ng-template>
   </p-table>
 </p-panel>
 
-<p-dialog [header]="editando ? 'Edição de contato':'Novo contato'" [(visible)]="exibindoFormularioContato" modal="modal">
-    <form #formContato="ngForm" autocomplete="off"
-      *ngIf="contato" (ngSubmit)="confirmarContato(formContato)">
-      <div class="ui-g">
-        <div class="ui-g-12 ui-fluid">
-          <label>Nome</label>
-          <input pInputText type="text" name="nome" [(ngModel)]="contato.nome" #nome="ngModel" required>
-          <p-message *ngIf="nome.hasError('required') && nome.dirty" severity="error" text="Informe o nome"></p-message>
-        </div>
-        <div class="ui-g-12 ui-fluid">
-          <label>E=mail</label>
-          <input pInputText type="text" name="contatoEmail" [(ngModel)]="contato.email" #contatoEmail="ngModel" required email>
-          <p-message *ngIf="contatoEmail.hasError('email') && contatoEmail.dirty" severity="error" text="Informe um e-mail válido"></p-message>
-        </div>
-        <div class="ui-g-12 ui-fluid">
-          <label>Telefone</label>
-          <p-inputMask mask="(99) 99999-999?9" type="text" name="telefone" [(ngModel)]="contato.telefone" ></p-inputMask>
-        </div>
-
-        <div class="ui-g-12">
-          <button pButton type="submit" label="Confirmar" [disabled]="formContato.invalid"></button>
-        </div>
-
+<p-dialog
+  [header]="editando ? 'Editing contact' : 'New contact'"
+  [(visible)]="exibindoFormularioContato"
+  modal="modal"
+>
+  <form
+    #formContato="ngForm"
+    autocomplete="off"
+    *ngIf="contato"
+    (ngSubmit)="confirmarContato(formContato)"
+  >
+    <div class="ui-g">
+      <div class="ui-g-12 ui-fluid">
+        <label>Name</label>
+        <input
+          pInputText
+          type="text"
+          name="nome"
+          [(ngModel)]="contato.nome"
+          #nome="ngModel"
+          required
+        />
+        <p-message
+          *ngIf="nome.hasError('required') && nome.dirty"
+          severity="error"
+          text="inform the name"
+        ></p-message>
       </div>
-    </form>
-  </p-dialog>
+      <div class="ui-g-12 ui-fluid">
+        <label>E=mail</label>
+        <input
+          pInputText
+          type="text"
+          name="contatoEmail"
+          [(ngModel)]="contato.email"
+          #contatoEmail="ngModel"
+          required
+          email
+        />
+        <p-message
+          *ngIf="contatoEmail.hasError('email') && contatoEmail.dirty"
+          severity="error"
+          text="inform a valid e-mail"
+        ></p-message>
+      </div>
+      <div class="ui-g-12 ui-fluid">
+        <label>Phone</label>
+        <p-inputMask
+          mask="(99) 99999-999?9"
+          type="text"
+          name="telefone"
+          [(ngModel)]="contato.telefone"
+        ></p-inputMask>
+      </div>
+
+      <div class="ui-g-12">
+        <button
+          pButton
+          type="submit"
+          label="Confirm"
+          [disabled]="formContato.invalid"
+        ></button>
+      </div>
+    </div>
+  </form>
+</p-dialog>

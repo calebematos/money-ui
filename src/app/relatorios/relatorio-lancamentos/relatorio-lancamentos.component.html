@@ -1,24 +1,39 @@
 <div class="container">
   <div class="ui-g">
     <div class="ui-g-12">
-      <h1> Relatório de lançamentos por pessoa </h1>
+      <h1>Report of releases by person</h1>
     </div>
 
     <form #form="ngForm" (ngSubmit)="gerar()">
       <div class="ui-g-10 relatorio-filtro">
-        <label>Vencimento</label>
-        <p-calendar dateFormat="dd/mm/yy" [locale]="br" name="periodoInicio" [(ngModel)]="periodoInicio"
-          [inputStyle]="{width: '95px'}" required ></p-calendar>
+        <label>Due date</label>
+        <p-calendar
+          dateFormat="dd/mm/yy"
+          [locale]="br"
+          name="periodoInicio"
+          [(ngModel)]="periodoInicio"
+          [inputStyle]="{ width: '95px' }"
+          required
+        ></p-calendar>
 
-        <label>até</label>
+        <label>until</label>
 
-        <p-calendar dateFormat="dd/mm/yy" [locale]="br" name="periodoFim" [(ngModel)]="periodoFim"
-          [inputStyle]="{width: '95px'}" required ></p-calendar>
+        <p-calendar
+          dateFormat="dd/mm/yy"
+          [locale]="br"
+          name="periodoFim"
+          [(ngModel)]="periodoFim"
+          [inputStyle]="{ width: '95px' }"
+          required
+        ></p-calendar>
       </div>
       <div class="ui-g-12">
-        <p-button type="submit" label="Gerar" [disabled]="form.invalid"></p-button>
+        <p-button
+          type="submit"
+          label="Gerar"
+          [disabled]="form.invalid"
+        ></p-button>
       </div>
     </form>
-
   </div>
 </div>

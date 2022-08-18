@@ -1,63 +1,91 @@
 <div class="container">
   <div class="ui-g">
     <form autocomplete="off" (ngSubmit)="pesquisar()">
-
       <div class="ui-g-12">
-        <h1>Pessoas</h1>
+        <h1>People</h1>
       </div>
 
       <div class="ui-g-12 ui-fluid">
-        <label>Nome</label>
-        <input pInputText type="text" name="nome" [(ngModel)]="filtro.nome">
+        <label>Name</label>
+        <input pInputText type="text" name="nome" [(ngModel)]="filtro.nome" />
       </div>
 
       <div class="ui-g-12">
-        <button pButton type="submit" label="Pesquisar"></button>
+        <button pButton type="submit" label="Search"></button>
       </div>
     </form>
   </div>
 
   <div class="ui-g">
     <div class="ui-g-12">
-      <p-table [value]="pessoas" [responsive]="true" [paginator]="true" [rows]="filtro.itensPorPagina"
-        [lazy]="true" [totalRecords]="totalRegistros" (onLazyLoad)="aoMudarDePagina($event)" #tabela>
+      <p-table
+        [value]="pessoas"
+        [responsive]="true"
+        [paginator]="true"
+        [rows]="filtro.itensPorPagina"
+        [lazy]="true"
+        [totalRecords]="totalRegistros"
+        (onLazyLoad)="aoMudarDePagina($event)"
+        #tabela
+      >
         <ng-template pTemplate="header">
           <tr>
-            <th>Nome</th>
-            <th>Cidade</th>
-            <th>Estado</th>
+            <th>Name</th>
+            <th>City</th>
+            <th>State</th>
             <th>Status</th>
             <th style="width: 100px"></th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-pessoa>
           <tr>
-            <td>{{pessoa.nome}}</td>
-            <td>{{pessoa.endereco.cidade?.nome}}</td>
-            <td>{{pessoa.endereco.cidade?.estado.nome}}</td>
-            <td><a href="javascript:;" [pTooltip]="pessoa.ativo ? 'Inativar' : 'Ativar'" tooltipPosition="top" (click)="mudarStatus(pessoa)">{{pessoa.ativo ? 'Ativo'
-                : 'Inativo'}}</a></td>
+            <td>{{ pessoa.nome }}</td>
+            <td>{{ pessoa.endereco.cidade?.nome }}</td>
+            <td>{{ pessoa.endereco.cidade?.estado.nome }}</td>
             <td>
-              <button pButton type="button" icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
-                [routerLink]="['/pessoas', pessoa.codigo]"></button>
-              <button pButton type="button" icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top" (click)="confirmarExclusao(pessoa)"></button>
+              <a
+                href="javascript:;"
+                [pTooltip]="pessoa.ativo ? 'Inactive' : 'Active'"
+                tooltipPosition="top"
+                (click)="mudarStatus(pessoa)"
+                >{{ pessoa.ativo ? "Active" : "Inactive" }}</a
+              >
+            </td>
+            <td>
+              <button
+                pButton
+                type="button"
+                icon="pi pi-pencil"
+                pTooltip="Edit"
+                tooltipPosition="top"
+                [routerLink]="['/pessoas', pessoa.codigo]"
+              ></button>
+              <button
+                pButton
+                type="button"
+                icon="pi pi-trash"
+                pTooltip="Delete"
+                tooltipPosition="top"
+                (click)="confirmarExclusao(pessoa)"
+              ></button>
             </td>
           </tr>
         </ng-template>
         <ng-template pTemplate="emptymessage">
           <tr>
-            <td colspan="6">
-              Nenhuma pessoa encotrada
-            </td>
+            <td colspan="6">No pearson found</td>
           </tr>
         </ng-template>
-
       </p-table>
     </div>
 
     <div class="ui-g-12">
-      <button pButton type="button" label="Nova pessoa" routerLink="/pessoas/nova"></button>
+      <button
+        pButton
+        type="button"
+        label="New pearson"
+        routerLink="/pessoas/nova"
+      ></button>
     </div>
   </div>
-
 </div>
