@@ -1,32 +1,46 @@
 <div class="opcoes">
-  <h4> Opções de login:</h4>
-  Usuario: admin <br>
-  Senha: admin <br> <br>
-  Usuario: maria <br>
-  Senha: maria <br>
-
+  <h4>Login options:</h4>
+  User: admin <br />
+  Password: admin <br />
+  <br />
+  User: maria <br />
+  Password: maria <br />
 </div>
 <div class="container" style="max-width: 400px; margin: auto">
-
-
   <form autocomplete="off" #loginForm="ngForm">
-
     <div class="ui-g ui-fluid">
       <div class="ui-g-12">
         <h1>Login</h1>
       </div>
       <div class="ui-g-12">
-        <input pInputText type="text" placeholder="E-mail" name="login" #usuario ngModel required >
+        <input
+          pInputText
+          type="text"
+          placeholder="E-mail"
+          name="login"
+          #usuario
+          ngModel
+          required
+        />
       </div>
       <div class="ui-g-12">
-        <input pInputText type="password" placeholder="Senha" name="senha" #senha ngModel required >
+        <input
+          pInputText
+          type="password"
+          placeholder="Password"
+          name="senha"
+          #senha
+          ngModel
+          required
+        />
       </div>
       <div class="ui-g-12">
-        <p-button label="Login" (click)="login(usuario.value, senha.value); senha.value=''" [disabled]="loginForm.invalid"></p-button>
+        <p-button
+          label="Login"
+          (click)="login(usuario.value, senha.value); senha.value = ''"
+          [disabled]="loginForm.invalid"
+        ></p-button>
       </div>
-
     </div>
-
   </form>
 </div>
-
